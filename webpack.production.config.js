@@ -2,11 +2,21 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var autoprefixer = require('autoprefixer');//自动修补css浏览器前缀
+var path = require('path');
+
+
+//定义地址
+var ROOT_PATH = path.resolve(__dirname);
+var APP_PATH = path.resolve(ROOT_PATH, 'src'); //__dirname 中的src目录，以此类推
+var APP_FILE = path.resolve(APP_PATH, 'index.js'); //根目录文件app.jsx地址
+var BUILD_PATH = path.resolve(ROOT_PATH, 'build'); //发布文件所存放的目录
+
+
 
 module.exports = {
     devtool: 'source-map',//生成source map以追踪js错误
     entry: {
-        app: __dirname + "/src/index.js",
+        app: APP_FILE,
         common: [
             "react",
             'react-dom',
@@ -19,7 +29,7 @@ module.exports = {
     },
     output: {
         publicPath: 'http://static.hehenian.com/m/v6/dist/', 
-        path: __dirname + "/build",
+        path: BUILD_PATH,
         filename: "[name].[hash:8].min.js",
         chunkFilename: '[name].[chunkhash:8].min.js',
     },
@@ -65,12 +75,14 @@ module.exports = {
             inject: 'body',
         }),
         new ExtractTextPlugin("[name].[hash:8].css"),
-        //提取出来的样式和common.js会自动添加进发布模式的html文件中，原来的html没有
-        new webpack.optimize.CommonsChunkPlugin("common", "common.bundle.js"),
         new webpack.optimize.DedupePlugin(),
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': '"production"'
+            'process.env': {
+                NODE_ENV: JSON.stringify('production') //定义生产环境
+            }
         }),
+        //提取出来的样式和common.js会自动添加进发布模式的html文件中，原来的html没有
+        new webpack.optimize.CommonsChunkPlugin("common", "common.bundle.js"),
         new webpack.optimize.UglifyJsPlugin({
             output: {
                 comments: false, // remove all comments
