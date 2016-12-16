@@ -6,9 +6,6 @@ import { is, fromJS } from 'immutable';
 
 import { Header, Template } from './Common/Mixin';
 
-import  '../style/main';
-
-
 class Index extends Component {
     constructor(props) {
         super(props);
@@ -54,6 +51,7 @@ class Index extends Component {
         return (
             <div className="index_module">
                 <Header nav saleRecord title='首页' />
+                <Link to="/HelpCenter">HelpCenter</Link>
             </div>
         )
     }

@@ -28,7 +28,8 @@ export class Header extends Component {  //头部标题
         return (
             <header className="head-list" style={this.state.indexNavStyle}>
                 <div className="top-nav">
-                    <a className="link" href="javascript:history.go(-1)">1111231231</a><h1>{this.state.title}</h1>
+                    <a className="link" href="javascript:history.go(-1);">返回</a>
+                    <h1>{this.props.title}</h1>
                 </div>
             </header>
         );

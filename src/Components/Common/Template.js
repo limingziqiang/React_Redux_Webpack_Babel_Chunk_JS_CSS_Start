@@ -3,7 +3,9 @@
 import { connect } from 'react-redux';
 import { is, fromJS } from 'immutable';
 import *as action from '../../Redux/Action/Index';
+// import { RouteTransition } from 'react-router-transition';
 
+// import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 const Main = mySeting => {
     let seting = {
@@ -27,7 +29,19 @@ const Main = mySeting => {
 
         render() {
             var state = this.props.state;
-            return <this.props.seting.component {...this.props} state={this.props.state.toJS()} />;
+            return (
+                /*<RouteTransition
+                    pathname={this.props.location.pathname}
+                    atEnter={{ translateX: 100 }}
+                    atLeave={{ translateX: -100 }}
+                    atActive={{ translateX: 0 }}
+                    className="route-tranition"
+                    // runOnMount={false}
+                    mapStyles={styles => ({ transform: `translateX(${styles.translateX}%)` })}
+                    >*/
+                    <this.props.seting.component {...this.props} state={this.props.state.toJS()} />
+                // </RouteTransition>
+            );
         }
 
         componentDidMount() {//获取数据
@@ -44,6 +58,8 @@ const Main = mySeting => {
             }
             return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state), fromJS(nextState))
         }
+
+
     }
 
     //mapStateToProps and mapDispatchToProps

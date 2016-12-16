@@ -24,7 +24,8 @@ module.exports = {
             'redux',
             'react-redux',
             'redux-thunk',
-            'immutable'
+            // 'immutable',
+            'react-router-transition'
         ]
     },
     output: {
