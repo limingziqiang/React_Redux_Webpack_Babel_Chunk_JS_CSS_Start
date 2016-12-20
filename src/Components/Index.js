@@ -50,7 +50,7 @@ class Index extends Component {
     render() {
         return (
             <div className="index_module">
-                <Header nav saleRecord title='首页' />
+                <Header nav saleRecord title='首页' isBack={false} />
                 <Link to="/HelpCenter">HelpCenter</Link>
             </div>
         )

@@ -1,18 +1,22 @@
 import React, { Component, PropTypes } from 'react';
-import { Router, Route, Redirect, IndexRoute, browserHistory, hashHistory } from 'react-router';
+import { Router, Route, Redirect, IndexRoute, browserHistory, hashHistory, withRouter } from 'react-router';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import Index from '../Components/Index'; //首页
 
 class Roots extends Component {
+    constructor(props, context) {
+        super(props);
+    }
     render() {
+        console.log(this.props.location.action)
         return (
             <ReactCSSTransitionGroup
                 component="div"
                 transitionName="route"
-                className="route-wrapper"
-                transitionEnterTimeout={500}
-                transitionLeaveTimeout={500}
+                className={"route-wrapper "+this.props.location.action}
+                transitionEnterTimeout={400}
+                transitionLeaveTimeout={400}
                 >
                 {React.cloneElement(this.props.children, {
                     key: location.pathname
@@ -20,6 +24,8 @@ class Roots extends Component {
             </ReactCSSTransitionGroup>
         );
     }
+
+
 }
 
 const history = process.env.NODE_ENV !== 'production' ? browserHistory : hashHistory;

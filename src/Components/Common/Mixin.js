@@ -24,11 +24,19 @@ export class Header extends Component {  //头部标题
         return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state), fromJS(nextState))
     }
 
+    isBack(){
+        if(this.props.isBack!==false){
+            return <a className="link" href="javascript:history.go(-1);">返回</a>
+        }else{
+            return null;
+        }
+    }
+
     render() {
         return (
             <header className="head-list" style={this.state.indexNavStyle}>
                 <div className="top-nav">
-                    <a className="link" href="javascript:history.go(-1);">返回</a>
+                    {this.isBack()}
                     <h1>{this.props.title}</h1>
                 </div>
             </header>

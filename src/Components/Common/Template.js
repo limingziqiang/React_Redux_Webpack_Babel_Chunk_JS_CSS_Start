@@ -6,6 +6,7 @@ import *as action from '../../Redux/Action/Index';
 // import { RouteTransition } from 'react-router-transition';
 
 // import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import { withRouter } from 'react-router';
 
 const Main = mySeting => {
     let seting = {
@@ -39,7 +40,7 @@ const Main = mySeting => {
                     // runOnMount={false}
                     mapStyles={styles => ({ transform: `translateX(${styles.translateX}%)` })}
                     >*/
-                    <this.props.seting.component {...this.props} state={this.props.state.toJS()} />
+                <this.props.seting.component {...this.props} state={this.props.state.toJS()} />
                 // </RouteTransition>
             );
         }
@@ -60,6 +61,21 @@ const Main = mySeting => {
         }
 
 
+
+
+        componentWillMount() {
+            // console.log(this.props)
+            this.props.router.setRouteLeaveHook(
+                this.props.route,
+                this.routerWillLeave
+            )
+        }
+
+        routerWillLeave(nextLocation) {
+            // console.log(nextLocation)
+        }
+
+
     }
 
     //mapStateToProps and mapDispatchToProps
@@ -71,7 +87,7 @@ const Main = mySeting => {
             // saleRecord,
             // requestData,
         }
-    }, action)(Index); //连接redux
+    }, action)(withRouter(Index)); //连接redux
 }
 
 
