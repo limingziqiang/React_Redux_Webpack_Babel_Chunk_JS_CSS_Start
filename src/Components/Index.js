@@ -66,6 +66,6 @@ export default Template({
     id: 'index',  //应用关联使用的redux
     component: Index,//接收数据的组件入口
     url: '/api/appHomePage.do',
-    data:{a:122}
+    data: { a: 122 }
 });
 

@@ -9,12 +9,11 @@ class Roots extends Component {
         super(props);
     }
     render() {
-        console.log(this.props.location.action)
         return (
             <ReactCSSTransitionGroup
                 component="div"
                 transitionName="route"
-                className={"route-wrapper "+this.props.location.action}
+                className={"route-wrapper " + this.props.location.action}
                 transitionEnterTimeout={400}
                 transitionLeaveTimeout={400}
                 >
