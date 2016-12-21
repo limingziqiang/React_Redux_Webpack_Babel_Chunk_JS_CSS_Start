@@ -20,3 +20,6 @@
 * ES6 for React：<http://egorsmirnov.me/2015/05/22/react-and-es6-part1.html>
 
 * Webpack for React：<http://www.pro-react.com/materials/appendixA/>
+
+###路由demo
+![路由demo](https://raw.githubusercontent.com/dreamback/React_Redux_Webpack_Babel_Chunk_JS_CSS_Start/master/src/style/images/demo.gif)
